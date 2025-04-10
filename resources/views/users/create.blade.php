@@ -1,71 +1,62 @@
 @extends('layouts.master')
 
-@section('content')
-<div class="container">
-    <form action={{route('saveuser')}} method="post" enctype="multipart/form-data">
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Create New Customer</h2>
+
+    <form action="{{ route('saveUser') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="form-group">
 
-          <label >First Name</label>
-          <input type="text"   name="first" class="form-control" aria-describedby="emailHelp" placeholder="First Name">
-          @error('first')<p class="text-danger">{{$message}}</p>
-          @enderror
+        <div class="form-group mb-3">
+            <label for="first">First Name</label>
+            <input type="text" name="first" class="form-control" id="first" placeholder="First Name" value="{{ old('first') }}">
+            @error('first') <p class="text-danger">{{ $message }}</p> @enderror
         </div>
 
-        <div class="form-group">
-            <label >Last Name</label>
-            <input type="text"   name="last" class="form-control" aria-describedby="emailHelp" placeholder="Last Name">
-            @error('last')<p class="text-danger">{{$message}}</p>
-            @enderror
-          </div>
+        <div class="form-group mb-3">
+            <label for="last">Last Name</label>
+            <input type="text" name="last" class="form-control" id="last" placeholder="Last Name" value="{{ old('last') }}">
+            @error('last') <p class="text-danger">{{ $message }}</p> @enderror
+        </div>
 
-          <div class="form-group">
-            <label >Date of Birth</label>
-            <input type="text"   name="dob" class="form-control" aria-describedby="emailHelp" placeholder= "Date of Birth">
-          </div>
+        <div class="form-group mb-3">
+            <label for="dob">Date of Birth</label>
+            <input type="date" name="dob" class="form-control" id="dob" value="{{ old('dob') }}">
+            @error('dob') <p class="text-danger">{{ $message }}</p> @enderror
+        </div>
 
-          <div class="form-group">
-            <label >Email</label>
-            <input type="text"   name="email" class="form-control" aria-describedby="emailHelp" placeholder= "Email">
-          </div>
+        <div class="form-group mb-3">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{ old('email') }}">
+            @error('email') <p class="text-danger">{{ $message }}</p> @enderror
+        </div>
 
-        <div class="form-group">
-            <label >Phone-Number</label>
-            <input type="text"   name="number" class="form-control" aria-describedby="emailHelp" placeholder= "Phone Number">
-          </div>
+        <div class="form-group mb-3">
+            <label for="number">Phone Number</label>
+            <input type="text" name="number" class="form-control" id="number" placeholder="Phone Number" value="{{ old('number') }}">
+            @error('number') <p class="text-danger">{{ $message }}</p> @enderror
+        </div>
 
-          <div class="form-group">
-            <label >place</label>
-            <input type="text"   name="place" class="form-control" aria-describedby="emailHelp" placeholder= "place">
-          </div>
+        <div class="form-group mb-3">
+            <label for="place">Place</label>
+            <input type="text" name="place" class="form-control" id="place" placeholder="Place" value="{{ old('place') }}">
+            @error('place') <p class="text-danger">{{ $message }}</p> @enderror
+        </div>
 
-          <div class="form-group">
-            <label >image</label>
-            <input type="file"   name="image" class="form-control" aria-describedby="emailHelp" placeholder= "image">
-          </div>
+        <div class="form-group mb-3">
+            <label for="image">Image</label>
+            <input type="file" name="image" class="form-control" id="image">
+            @error('image') <p class="text-danger">{{ $message }}</p> @enderror
+        </div>
 
-
-            {{-- <div class="mb-3">
-                    <label for="address" class="form-label">Address</label>
-                    <textarea class="form-control" name="address" name="address" rows="3" required placeholder="Address"></textarea>
-                </div> --}}
-
-
-
-          <div class="form-group">
-            <label >Status</label>
+        <div class="form-group mb-4">
+            <label for="status">Status</label>
             <select name="status" id="status" class="form-control">
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
+                <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Active</option>
+                <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
             </select>
-
+            @error('status') <p class="text-danger">{{ $message }}</p> @enderror
         </div>
 
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
 </div>
-@endsection
-
-

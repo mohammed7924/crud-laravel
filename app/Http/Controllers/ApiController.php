@@ -4,37 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use App\Models\User;
 
 class ApiController extends Controller
-
 {
+    public function login(): \Illuminate\Http\JsonResponse
+    {
+        $email = request('email');
+        $password = request('password');
 
-    public function login(){
-        $user = Customer::where('email', request('email'))->first();
-        if($user){
+        $user = Customer::where('email', $email)->first();
 
+        if ($user) {
             return response()->json([
-                'status'=>200,
-'data'=>$user,
-                'email'=>request('email'),
-                'password'=>request('password'),
-                'message'=>'valid credentials',
+                'status' => 200,
+                'data' => $user,
+                'email' => $email,
+                'password' => $password, 
+                'message' => 'Valid credentials',
             ]);
-
-        }else{
-            return response()->json([
-                'email'=>request('email'),
-                'password'=>request('password'),
-                'message'=>'invalid credentials',
-                'status'=>250
-            ]);
-
         }
 
-
+        return response()->json([
+            'status' => 250,
+            'email' => $email,
+            'password' => $password,
+            'message' => 'Invalid credentials',
+        ]);
     }
-    public function getProfile(Request $request)
+
+    public function getProfile(Request $request): \Illuminate\Http\JsonResponse
     {
         $id = $request->input('id');
         $user = Customer::find($id);
