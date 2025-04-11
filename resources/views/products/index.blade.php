@@ -20,7 +20,7 @@
 
         <div class="row">
             @foreach ($products as $product)
-                <div class="col-md-4 mb-3">
+                <div class="col-md-4 mb-2">
                     <div class="card">
                         @if ($product->images->first())
                             <img src="{{ asset('storage/' . $product->images->first()->image) }}" class="card-img-top" height="250" style="width: 100%;">
