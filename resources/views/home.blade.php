@@ -22,23 +22,30 @@
     <div class="container mt-5">
         <h2 class="text-center mb-4">Customers List</h2>
 
+
+
         <div class="d-flex justify-content-end mb-3">
-            <a href="{{ route('create') }}" class="btn btn-success">
-                <i class="bi bi-plus-lg"></i> Create New
-            </a>
+    <a href="{{ route('products.index') }}" class="btn btn-primary me-2">
+        <i class="bi bi-box-seam"></i> Products
+    </a>
 
-            <a href="{{ route('logout') }}" class="btn btn-danger ms-2">
-                <i class="bi bi-box-arrow-right"></i> Logout
-            </a>
+    <a href="{{ route('create') }}" class="btn btn-success">
+        <i class="bi bi-plus-lg"></i> Create New
+    </a>
 
-            <a href="{{ route('export') }}" class="btn btn-info ms-2">
-                <i class="bi bi-box-arrow-right"></i> Export
-            </a>
+    <a href="{{ route('logout') }}" class="btn btn-danger ms-2">
+        <i class="bi bi-box-arrow-right"></i> Logout
+    </a>
 
-            <a href="{{ route('pdf') }}" class="btn btn-warning ms-2">
-                <i class="bi bi-box-arrow-right"></i> PDF
-            </a>
-        </div>
+    <a href="{{ route('export') }}" class="btn btn-info ms-2">
+        <i class="bi bi-box-arrow-right"></i> Export
+    </a>
+
+    <a href="{{ route('pdf') }}" class="btn btn-warning ms-2">
+        <i class="bi bi-box-arrow-right"></i> PDF
+    </a>
+</div>
+
 
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover">
@@ -99,5 +106,4 @@
             </div>
         </div>
     </div>
-
 
