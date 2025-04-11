@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
+
+
 
 Route::get('/',[LoginController::class,'login'])->name('login');
 Route::post('/do-login',[LoginController::class,'dologin'])->name('dologin');
@@ -24,3 +27,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/export', [HomepageController::class, 'export'])->name('export');
 Route::get('/pdf', [HomepageController::class, 'pdf'])->name('pdf');
 
+Route::resource('products', ProductController::class);
+Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
+
+Route::delete('/product-images/{id}', [ProductController::class, 'deleteImage'])->name('product-images.destroy');
